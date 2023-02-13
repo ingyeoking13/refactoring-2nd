@@ -1,7 +1,7 @@
 const plays = require('./plays.json')
 const invoices = require('./invoices.json')
 
-function statement(invoice: {[key:string]: any}, plays: {[key:string]: any}) {
+function statement(invoice: {[key:string]: any}, plays: {[key:string]: Play}) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내역 (고객명: ${invoice.customer})\n`;
@@ -40,16 +40,16 @@ function statement(invoice: {[key:string]: any}, plays: {[key:string]: any}) {
     if ('comedy' == play.type) volumeCredits += Math.floor(perf.audience / 5);
 
     // 청구 내역을 출력한다.
-    result += ` ${play.name}: ${format(thisAmount / 1000)} (${
+    result += ` ${play.name}: ${format(thisAmount / 100)} (${
       perf.audience
     })석\n`;
     totalAmount += thisAmount;
   }
-  result += `총액: ${format(totalAmount)}\n`;
+  result += `총액: ${format(totalAmount / 100)}\n`;
   result += `적립 포인트: ${volumeCredits}점`;
 
   return result;
 }
 
 
-export { statement };
+export default statement;
