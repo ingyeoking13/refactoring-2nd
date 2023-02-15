@@ -1,28 +1,36 @@
 import beforeEdit from "./1";
 import afterEdit from "./2";
 import { statement, htmlStatement } from "./3_state";
+import { Invoice as ExtendedInvoice } from './3_create'
+import { statement as polynomial } from './4_state'
+
 import plays from './plays.json';
 import invoices from './invoices.json';
-import { Invoice as ExtendedInvoice } from './3_create'
 
 describe('ch1_test', ()=>{
 
-    test('first_test', () => {
+    test('1_start', () => {
       const result = beforeEdit(invoices[0] as Invoice, plays);
       const expected = getExpected();
       expect(result).toEqual(expected);
     });
 
-    test('first_edit', () => {
+    test('2_first_edit', () => {
       const result = afterEdit(invoices[0] as Invoice);
       const expected = getExpected();
       expect(result).toEqual(expected);
     });
 
-    test('second_edit_for_render', () => {
+    test('3_second_edit_for_render', () => {
       const result = statement(invoices[0] as ExtendedInvoice);
       const expected = getExpected();
       expect(result).toEqual(expected);
+    });
+
+    test('4_third_edit', () => {
+        const result = polynomial(invoices[0] as ExtendedInvoice);
+        const expected = getExpected();
+        expect(result).toEqual(expected);
     });
 
 })
