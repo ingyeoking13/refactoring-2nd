@@ -2,7 +2,22 @@
 const plays = require('./plays.json')
 const invoices = require('./invoices.json')
 
-function statement(invoice: {[key:string]: any}) {
+interface Play {
+    name: string;
+    type: string;
+}
+
+interface Performance {
+    playID: string;
+    audience: number;
+}
+
+interface Invoice { 
+    customer: string;
+    performances: Performance[];
+}
+
+function statement(invoice: Invoice) {
   let result = `청구 내역 (고객명: ${invoice.customer})\n`;
 
   for (let aPerformance of invoice.performances) {

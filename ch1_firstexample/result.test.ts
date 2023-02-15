@@ -1,25 +1,26 @@
 import beforeEdit from "./1";
 import afterEdit from "./2";
-import renderEdit from "./3_render";
+import { statement, htmlStatement } from "./3_state";
 import plays from './plays.json';
 import invoices from './invoices.json';
+import { Invoice as ExtendedInvoice } from './3_create'
 
 describe('ch1_test', ()=>{
 
     test('first_test', () => {
-      const result = beforeEdit(invoices[0], plays);
+      const result = beforeEdit(invoices[0] as Invoice, plays);
       const expected = getExpected();
       expect(result).toEqual(expected);
     });
 
     test('first_edit', () => {
-      const result = afterEdit(invoices[0]);
+      const result = afterEdit(invoices[0] as Invoice);
       const expected = getExpected();
       expect(result).toEqual(expected);
     });
 
     test('second_edit_for_render', () => {
-      const result = renderEdit(invoices[0]);
+      const result = statement(invoices[0] as ExtendedInvoice);
       const expected = getExpected();
       expect(result).toEqual(expected);
     });
