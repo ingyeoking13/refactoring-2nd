@@ -19,7 +19,8 @@ describe('province', ()=> {
 })
 
 describe('province with fixture', ()=> {
-    let asia: Province;
+    let asia: Province = new Province(SampleProvinceData() as Province);
+
     beforeEach(()=>{
         asia = new Province(SampleProvinceData() as Province)
     })
