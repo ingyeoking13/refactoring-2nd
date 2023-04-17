@@ -13,6 +13,7 @@ function raise(aPerson, factor){
 }
 
 
+// example
 function baseCharge(usage) {
     if (usage < 0) 
         return usd(0)

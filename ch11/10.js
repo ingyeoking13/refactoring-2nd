@@ -1,3 +1,4 @@
+// FROM 
 class ChargeCalculator {
     constructor(customer, usage) {
         this._customer = customer;
@@ -7,4 +8,9 @@ class ChargeCalculator {
     execute() {
         return this._customer.rate * this._usage;
     }
+}
+
+// TO
+function charge(customer, usage) {
+    return customer.rate * usage;
 }

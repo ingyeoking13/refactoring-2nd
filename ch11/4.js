@@ -1,6 +1,6 @@
 // FROM
-const low = aRoom.daysTempRange
-const hight = aRoom.daysTempRange
+const low = aRoom.daysTempRange.low
+const high = aRoom.daysTempRange.high
 if (aPlan.withinRange(low, high));
 
 // TO
